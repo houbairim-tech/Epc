@@ -1,0 +1,20 @@
+name: Build Android APK
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download project
+        uses: actions/checkout@v4
+
+      - name: Extract ZIP
+        run: |
+          unzip -o HSE_Inspection_Manager_Mobile.zip -d project
+
+      - name: Check files
+        run: |
+          find project -maxdepth 3 -type f | head -100
